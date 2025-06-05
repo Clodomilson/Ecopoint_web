@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+frontend/.next/
+frontend/build/
+backend/dist/
+backend/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Banco de dados (NUNCA enviar dump ou arquivos do postgres)
+*.sqlite
+*.db
+*.sql
+*.dump
+
+# VSCode settings (opcional)
+.vscode/
