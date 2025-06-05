@@ -33,3 +33,5 @@ Thumbs.db
 
 # VSCode settings (opcional)
 .vscode/
+
+backend/firebaseServiceAccount.json

@@ -1,9 +1,10 @@
-const db = require('../models/db');
+const db = require('../firebase');
 
 exports.listarPontos = async (req, res) => {
   try {
-    const result = await db.query('SELECT * FROM pontos_coleta');
-    res.json(result.rows);
+    const snapshot = await db.collection('pontos_coleta').get();
+    const pontos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    res.json(pontos);
   } catch (err) {
     res.status(500).json({ erro: err.message });
   }
@@ -12,10 +13,7 @@ exports.listarPontos = async (req, res) => {
 exports.adicionarPonto = async (req, res) => {
   const { nome, latitude, longitude } = req.body;
   try {
-    await db.query(
-      'INSERT INTO pontos_coleta (nome, latitude, longitude) VALUES ($1, $2, $3)',
-      [nome, latitude, longitude]
-    );
+    await db.collection('pontos_coleta').add({ nome, latitude, longitude });
     res.status(201).json({ mensagem: 'Ponto de coleta cadastrado com sucesso!' });
   } catch (err) {
     res.status(500).json({ erro: err.message });
