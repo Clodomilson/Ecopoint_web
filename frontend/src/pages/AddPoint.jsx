@@ -32,7 +32,7 @@ function AddPoint() {
     }
 
     try {
-      await axios.post('https://ecopoint-web.vercel.app/api/pontos', {
+      await axios.post('https://ecoponto-api.vercel.app/api/ecopontos', {
         nome: name,
         latitude: parseFloat(latitude),
         longitude: parseFloat(longitude)
